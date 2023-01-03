@@ -13,7 +13,7 @@ public class CarDaoImp implements CarDao {
     public SessionFactory sessionFactory;
 
     @Autowired
-    public CarDaoImp (SessionFactory sessionFactory) {
+    public CarDaoImp(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
