@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class CarDaoImp implements CarDao {
@@ -17,11 +18,13 @@ public class CarDaoImp implements CarDao {
         this.sessionFactory = sessionFactory;
     }
 
+    @Transactional
     @Override
     public void add(Car car) {
         sessionFactory.getCurrentSession().save(car);
     }
 
+    @Transactional
     @Override
     public User selectUser(String model, int series) {
         String HQL = "FROM User WHERE id = (SELECT id FROM Car WHERE model = :model AND series = :series)";
