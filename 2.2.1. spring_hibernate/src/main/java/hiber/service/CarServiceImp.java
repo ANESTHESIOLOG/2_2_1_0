@@ -19,11 +19,13 @@ public class CarServiceImp implements CarService {
     }
 
     @Override
+    @Transactional
     public void add(Car car) {
         carDao.add(car);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User selectUser(String model, int series) {
         return carDao.selectUser(model, series);
     }

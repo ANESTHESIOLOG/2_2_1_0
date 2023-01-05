@@ -18,13 +18,12 @@ public class CarDaoImp implements CarDao {
         this.sessionFactory = sessionFactory;
     }
 
-    @Transactional
+
     @Override
     public void add(Car car) {
         sessionFactory.getCurrentSession().save(car);
     }
 
-    @Transactional
     @Override
     public User selectUser(String model, int series) {
         String HQL = "FROM User WHERE id = (SELECT id FROM Car WHERE model = :model AND series = :series)";
